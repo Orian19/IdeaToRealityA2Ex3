@@ -7,6 +7,11 @@ DATASET_PATH = r'C:\IdeaToReality\A2\IdeaToRealityA2Ex3\gradio_celeb_face_recogn
 
 
 def find_similar_celebrity(image_path):
+    """
+    finding to whom the given person image is most similar to from the celebs
+    :param image_path: jpg image of a person's face
+    :return: name of the celeb (+distance which corresponds to similarity)
+    """
     try:
         result = DeepFace.find(img_path=image_path, db_path=DATASET_PATH, enforce_detection=False)[0]
         # The result contains a pandas DataFrame with the paths of the similar images and their similarity scores
