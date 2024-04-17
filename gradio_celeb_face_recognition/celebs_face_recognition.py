@@ -13,12 +13,14 @@ def find_similar_celebrity(image_path):
     :return: name of the celeb (+distance which corresponds to similarity)
     """
     try:
-        result = DeepFace.find(img_path=image_path, db_path=DATASET_PATH, enforce_detection=False)[0]
+        result = DeepFace.find(img_path=image_path, db_path=DATASET_PATH, model_name='VGG-Face')[0]
         # The result contains a pandas DataFrame with the paths of the similar images and their similarity scores
         if not result.empty:
             closest_image = result.iloc[0]
             celeb_name = os.path.basename(os.path.dirname(closest_image['identity']))
             return f"Most similar to: {celeb_name}, similarity(distance): {closest_image['distance']:.3f}"
+        else:
+            return "No similar celebrity found."
     except Exception as e:
         return f"Error during processing: {str(e)}"
 
