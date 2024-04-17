@@ -18,9 +18,14 @@ def find_similar_celebrity(image_path):
         return f"Error during processing: {str(e)}"
 
 
-iface = gr.Interface(fn=find_similar_celebrity,
-                     inputs=gr.Image(),
-                     outputs="text",
-                     title="Find Your Celebrity Look-alike")
+def main():
+    iface = gr.Interface(fn=find_similar_celebrity,
+                         inputs=gr.Image(),
+                         outputs="text",
+                         title="Find Your Celebrity Look-alike")
 
-iface.launch(share=True)
+    iface.launch(share=True)
+
+
+if __name__ == '__main__':
+    main()
